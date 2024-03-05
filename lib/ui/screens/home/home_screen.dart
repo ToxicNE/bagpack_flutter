@@ -1,3 +1,4 @@
+import 'package:bagpack/ui/widgets/product.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -9,6 +10,39 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   String selectedPage = '';
+
+  List <ProductCart> products = [
+    ProductCart(
+      name: 'Product 1',
+      description: 'Description',
+      image: 'https://www.wmj.ru/imgs/2020/10/23/18/4300765/75ca401ba4ef59c4222c54c26ac7cc22d032b145.jpg',
+    ),
+    ProductCart(
+      name: 'Product 2',
+      description: 'Description',
+      image: 'https://www.wmj.ru/imgs/2020/10/23/18/4300765/75ca401ba4ef59c4222c54c26ac7cc22d032b145.jpg',
+    ),
+    ProductCart(
+      name: 'Product 3',
+      description: 'Description',
+      image: 'https://www.wmj.ru/imgs/2020/10/23/18/4300765/75ca401ba4ef59c4222c54c26ac7cc22d032b145.jpg',
+    ),
+    ProductCart(
+      name: 'Product 4',
+      description: 'Description',
+      image: 'https://www.wmj.ru/imgs/2020/10/23/18/4300765/75ca401ba4ef59c4222c54c26ac7cc22d032b145.jpg',
+    ),
+    ProductCart(
+      name: 'Product 5',
+      description: 'Description',
+      image: 'https://www.wmj.ru/imgs/2020/10/23/18/4300765/75ca401ba4ef59c4222c54c26ac7cc22d032b145.jpg',
+    ),
+    ProductCart(
+      name: 'Product 6',
+      description: 'Description',
+      image: 'https://www.wmj.ru/imgs/2020/10/23/18/4300765/75ca401ba4ef59c4222c54c26ac7cc22d032b145.jpg',
+    ),
+  ];
 
   void showAlertDialogAddProduct() async {
     return showDialog<void>(
@@ -97,12 +131,27 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       body: Center(
-        child: SingleChildScrollView(
-          child: Text(
-            ' $selectedPage',
-            style: const TextStyle(fontSize: 25),
-          ),
-        ),
+        child: GridView.builder(
+            itemCount: products.length,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 1,
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 5,
+            childAspectRatio: 2.5,
+          
+          ), 
+          itemBuilder: (context, index) {
+            return GridTile(
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.grey.withOpacity(0.5),
+                  
+                ),
+              )
+            );
+          },
+          )
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
