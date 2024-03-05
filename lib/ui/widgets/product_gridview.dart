@@ -19,7 +19,7 @@ class _ProductGridViewState extends State<ProductGridView> {
         crossAxisCount: 1,
         crossAxisSpacing: 10,
         mainAxisSpacing: 5,
-        childAspectRatio: 2.5,
+        childAspectRatio: 1.5,
       ),
       itemBuilder: (context, index) {
         return CartWidget(product: products[index]);

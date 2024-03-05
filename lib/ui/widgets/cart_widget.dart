@@ -11,46 +11,45 @@ class CartWidget extends StatefulWidget {
 class _CartWidgetState extends State<CartWidget> {
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      borderRadius: BorderRadius.circular(10),
-      splashColor: Colors.deepPurple.shade400,
-      highlightColor: Colors.deepPurple.shade300,
-      hoverColor: Colors.deepPurple.shade400,
-      focusColor: Colors.deepPurple.shade400,
-      onTap: () {},
-      child: GridTile(
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: Colors.grey.withOpacity(0.5),
-          ),
-          child: Row(
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+      elevation: 15,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(20),
+        splashColor: Colors.deepPurple.shade400,
+        highlightColor: Colors.deepPurple.shade300,
+        hoverColor: Colors.deepPurple.shade400,
+        focusColor: Colors.deepPurple.shade400,
+        onTap: () {},
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
             children: [
               Expanded(
-                child: SizedBox(
-                  height: double.infinity,
+                flex: 2,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
                   child: Image.network(
                     widget.product.image,
-                    fit: BoxFit.fitHeight,
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
-              Expanded(
-                child: Center(
-                    child: Column(children: [
-                  Text(
-                    widget.product.name,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(fontSize: 20),
-                  ),
-                ])),
+              const SizedBox(height: 10),
+              Text(
+                widget.product.name,
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
+              const SizedBox(height: 10),
               Expanded(
-                child: Column(
-                  children: [
-                    Text(widget.product.description,
-                        textAlign: TextAlign.center, ),
-                  ],
+                flex: 1,
+                child: Text(
+                  widget.product.description,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(fontSize: 15),
                 ),
               ),
             ],

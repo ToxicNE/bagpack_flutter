@@ -59,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text("Главная"),
         centerTitle: true,
-        elevation: 0,
+        elevation: 15,
         backgroundColor: Colors.deepPurple.shade400,
         foregroundColor: Colors.black,
       ),
