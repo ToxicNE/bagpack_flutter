@@ -160,6 +160,10 @@ class _HomeScreenState extends State<HomeScreen> {
         },
         backgroundColor: Colors.deepPurple.shade400,
         foregroundColor: Colors.black,
+        tooltip: 'Добавить продукт',
+        elevation: 5,
+        shape: const CircleBorder(),
+        splashColor: Colors.deepPurple.shade300,
         child: const Icon(Icons.add),
       ),
     );
