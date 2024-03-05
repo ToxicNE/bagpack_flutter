@@ -74,21 +74,11 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             ListTile(
-              leading: const Icon(Icons.message),
-              title: const Text('Сообщения', style: TextStyle(fontSize: 25)),
+              leading: const Icon(Icons.home_rounded),
+              title: const Text('Главная', style: TextStyle(fontSize: 25)),
               onTap: () {
                 setState(() {
-                  selectedPage = 'Сообщения';
-                });
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.account_circle),
-              title: const Text('Профиль', style: TextStyle(fontSize: 25)),
-              onTap: () {
-                setState(() {
-                  selectedPage = 'Профиль';
+                  selectedPage = 'Главная';
                 });
                 Navigator.pop(context);
               },
