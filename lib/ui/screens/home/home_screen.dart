@@ -141,7 +141,17 @@ class _HomeScreenState extends State<HomeScreen> {
           
           ), 
           itemBuilder: (context, index) {
-            return GridTile(
+            return InkWell(
+              borderRadius: BorderRadius.circular(10),
+              splashColor: Colors.deepPurple.shade400,
+              highlightColor: Colors.deepPurple.shade300,
+              hoverColor: Colors.deepPurple.shade400,
+              focusColor: Colors.deepPurple.shade400,
+              
+              onTap: () {
+                
+              },
+              child:GridTile(
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
@@ -149,6 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   
                 ),
               )
+            ),
             );
           },
           )
