@@ -20,7 +20,6 @@ class SettingsScreenState extends State<SettingsScreen> {
       ),
       body: ListView(
         children: [
-          // Фото профиля
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: ClipRRect(
@@ -33,53 +32,48 @@ class SettingsScreenState extends State<SettingsScreen> {
               ),
             ),
           ),
-          // Кнопка смены фото профиля
           Center(
             child: ElevatedButton(
               onPressed: () {
-                // Обработчик смены фото профиля
+
               },
               child: const Text("Сменить фото профиля"),
             ),
           ),
-          // Переключатель темы
           SwitchListTile(
             title: const Text("Темная тема"),
-            value: false, // Здесь должно быть состояние темы
+            value: false, 
             onChanged: (value) {
-              // Обработчик изменения темы
+
             },
           ),
-          // Поле редактирования имени
           ListTile(
             title: const Text("Имя"),
             subtitle: const Text("Ваше имя"),
             trailing: IconButton(
               icon: const Icon(Icons.edit),
               onPressed: () {
-                // Обработчик редактирования имени
+                
               },
             ),
           ),
-          // Поле редактирования фамилии
           ListTile(
             title: const Text("Фамилия"),
             subtitle: const Text("Ваша фамилия"),
             trailing: IconButton(
               icon: const Icon(Icons.edit),
               onPressed: () {
-                // Обработчик редактирования фамилии
+
               },
             ),
           ),
-          // Поле редактирования email
           ListTile(
             title: const Text("Email"),
             subtitle: const Text("Ваш email"),
             trailing: IconButton(
               icon: const Icon(Icons.edit),
               onPressed: () {
-                // Обработчик редактирования email
+
               },
             ),
           ),
@@ -90,14 +84,13 @@ class SettingsScreenState extends State<SettingsScreen> {
             trailing: IconButton(
               icon: const Icon(Icons.edit),
               onPressed: () {
-                // Обработчик редактирования телефона
+
               },
             ),
           ),
-          // Кнопка очистки памяти приложения
           ElevatedButton(
             onPressed: () {
-              // Обработчик очистки памяти приложения
+
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white,
