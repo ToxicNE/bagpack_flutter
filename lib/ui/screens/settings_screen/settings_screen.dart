@@ -55,7 +55,7 @@ class SettingsScreenState extends State<SettingsScreen> {
             ),
           ),
           ListTile(
-            title:  Text("${users[0].surname}"),
+            title: Text("${users[0].surname}"),
             subtitle: const Text("Ваша фамилия"),
             trailing: IconButton(
               icon: const Icon(Icons.edit),
@@ -72,7 +72,7 @@ class SettingsScreenState extends State<SettingsScreen> {
           ),
           // Поле редактирования телефона
           ListTile(
-            title:  Text("${users[0].phoneNumber}"),
+            title: Text("${users[0].phoneNumber}"),
             subtitle: const Text("Ваш номер телефона"),
             trailing: IconButton(
               icon: const Icon(Icons.edit),
@@ -90,7 +90,6 @@ class SettingsScreenState extends State<SettingsScreen> {
               users[0].email = '';
               users[0].phoneNumber = '';
               users[0].profileImage = '';
-              
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white,

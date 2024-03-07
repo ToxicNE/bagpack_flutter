@@ -9,16 +9,13 @@ void main() {
 
 class App extends StatelessWidget {
   const App({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
-    if (isAuth == false){
-    return  MaterialApp(home: AuthenticationScreen());
-    }else{
+    if (isAuth == false) {
+      return MaterialApp(home: AuthenticationScreen());
+    } else {
       return const MaterialApp(home: HomeScreen());
     }
-    
   }
 }
-
-

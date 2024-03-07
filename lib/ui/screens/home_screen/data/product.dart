@@ -1,4 +1,4 @@
-class ProductCart{
+class ProductCart {
   ProductCart({
     required this.name,
     required this.description,

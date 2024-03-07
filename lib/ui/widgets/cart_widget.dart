@@ -41,7 +41,8 @@ class _CardWidgetState extends State<CardWidget> {
               Text(
                 widget.product.name,
                 textAlign: TextAlign.center,
-                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 10),
               Expanded(

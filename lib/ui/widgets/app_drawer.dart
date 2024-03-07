@@ -18,7 +18,7 @@ class _AppDrawerState extends State<AppDrawer> {
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-           DrawerHeader(
+          DrawerHeader(
             decoration: const BoxDecoration(
                 image: DecorationImage(
               fit: BoxFit.cover,

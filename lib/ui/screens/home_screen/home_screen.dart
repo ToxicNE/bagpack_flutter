@@ -21,14 +21,12 @@ List<ProductCart> products = [
   ProductCart(
     name: 'Швепс',
     description: 'Лимонный',
-    image:
-        'https://fry-meat.ru/upload/000/u11/1/2/shveps-limon-photo-big.jpg',
+    image: 'https://fry-meat.ru/upload/000/u11/1/2/shveps-limon-photo-big.jpg',
   ),
   ProductCart(
     name: 'Сок "Я"',
     description: 'Апельсиновый',
-    image:
-        'https://bahetle-sib.ru/storage/goods/2018.jpg',
+    image: 'https://bahetle-sib.ru/storage/goods/2018.jpg',
   ),
   ProductCart(
     name: 'Мажитель',
