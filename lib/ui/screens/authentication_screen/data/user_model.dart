@@ -12,3 +12,11 @@ class User {
     this.profileImage,
   });
 }
+
+User user = User(
+  name: '',
+  surname: '',
+  email: '',
+  phoneNumber: '',
+  profileImage: '',
+);

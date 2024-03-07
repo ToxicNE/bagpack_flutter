@@ -1,4 +1,4 @@
-import 'package:bagpack/ui/screens/authentication_screen/data/users.dart';
+import 'package:bagpack/ui/screens/authentication_screen/data/user_model.dart';
 import 'package:bagpack/ui/screens/settings_screen/settings_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +30,7 @@ class _AppDrawerState extends State<AppDrawer> {
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 16.0, left: 16.0),
                 child: Text(
-                  users[0].name,
+                  user.name,
                   style: const TextStyle(
                     color: Colors.black,
                     fontSize: 25,

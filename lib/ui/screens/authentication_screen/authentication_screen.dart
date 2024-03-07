@@ -1,6 +1,6 @@
 import 'package:bagpack/domain/user_repository.dart';
 import 'package:bagpack/main.dart';
-import 'package:bagpack/ui/screens/authentication_screen/data/users.dart';
+import 'package:bagpack/ui/screens/authentication_screen/data/user_model.dart';
 import 'package:flutter/material.dart';
 
 class AuthenticationScreen extends StatelessWidget {
@@ -41,8 +41,8 @@ class AuthenticationScreen extends StatelessWidget {
                   isAuth = true;
                 }
 
-                users[0].name = _nameController.text;
-                users[0].phoneNumber = _phoneController.text;
+                user.name = _nameController.text;
+                user.phoneNumber = _phoneController.text;
 
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(

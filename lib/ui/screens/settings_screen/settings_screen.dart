@@ -1,6 +1,6 @@
 import 'package:bagpack/domain/user_repository.dart';
 import 'package:bagpack/ui/screens/authentication_screen/authentication_screen.dart';
-import 'package:bagpack/ui/screens/authentication_screen/data/users.dart';
+import 'package:bagpack/ui/screens/authentication_screen/data/user_model.dart';
 import 'package:flutter/material.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -47,7 +47,7 @@ class SettingsScreenState extends State<SettingsScreen> {
             onChanged: (value) {},
           ),
           ListTile(
-            title: Text(users[0].name),
+            title: Text(user.name),
             subtitle: const Text("Ваше имя"),
             trailing: IconButton(
               icon: const Icon(Icons.edit),
@@ -55,7 +55,7 @@ class SettingsScreenState extends State<SettingsScreen> {
             ),
           ),
           ListTile(
-            title: Text("${users[0].surname}"),
+            title: Text("${user.surname}"),
             subtitle: const Text("Ваша фамилия"),
             trailing: IconButton(
               icon: const Icon(Icons.edit),
@@ -63,16 +63,15 @@ class SettingsScreenState extends State<SettingsScreen> {
             ),
           ),
           ListTile(
-            title: Text("${users[0].email}"),
+            title: Text("${user.email}"),
             subtitle: const Text("Ваш email"),
             trailing: IconButton(
               icon: const Icon(Icons.edit),
               onPressed: () {},
             ),
           ),
-          // Поле редактирования телефона
           ListTile(
-            title: Text("${users[0].phoneNumber}"),
+            title: Text("${user.phoneNumber}"),
             subtitle: const Text("Ваш номер телефона"),
             trailing: IconButton(
               icon: const Icon(Icons.edit),
@@ -85,11 +84,11 @@ class SettingsScreenState extends State<SettingsScreen> {
                 builder: (context) => AuthenticationScreen(),
               ));
               isAuth = false;
-              users[0].name = '';
-              users[0].surname = '';
-              users[0].email = '';
-              users[0].phoneNumber = '';
-              users[0].profileImage = '';
+              user.name = '';
+              user.surname = '';
+              user.email = '';
+              user.phoneNumber = '';
+              user.profileImage = '';
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white,
