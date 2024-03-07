@@ -31,7 +31,7 @@ List<ProductCart> products = [
         'https://bahetle-sib.ru/storage/goods/2018.jpg',
   ),
   ProductCart(
-    name: 'Можитель',
+    name: 'Мажитель',
     description: 'Арбузный',
     image:
         'https://korzina.su/upload/iblock/1e1/1e188c15647e9063d4c95f1da3a6bdcc.jpg',
