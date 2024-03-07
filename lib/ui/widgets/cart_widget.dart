@@ -1,14 +1,14 @@
 import 'package:bagpack/ui/screens/home_screen/data/product.dart';
 import 'package:flutter/material.dart';
 
-class CartWidget extends StatefulWidget {
-  const CartWidget({super.key, required this.product});
+class CardWidget extends StatefulWidget {
+  const CardWidget({super.key, required this.product});
   final ProductCart product;
   @override
-  State<CartWidget> createState() => _CartWidgetState();
+  State<CardWidget> createState() => _CardWidgetState();
 }
 
-class _CartWidgetState extends State<CartWidget> {
+class _CardWidgetState extends State<CardWidget> {
   @override
   Widget build(BuildContext context) {
     return Card(

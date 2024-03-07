@@ -22,7 +22,7 @@ class _ProductGridViewState extends State<ProductGridView> {
         childAspectRatio: 1.5,
       ),
       itemBuilder: (context, index) {
-        return CartWidget(product: products[index]);
+        return CardWidget(product: products[index]);
       },
     ));
   }
