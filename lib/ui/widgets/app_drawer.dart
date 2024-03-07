@@ -1,3 +1,4 @@
+import 'package:bagpack/ui/screens/authentication_screen/data/users.dart';
 import 'package:bagpack/ui/screens/settings_screen/settings_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -17,8 +18,8 @@ class _AppDrawerState extends State<AppDrawer> {
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          const DrawerHeader(
-            decoration: BoxDecoration(
+           DrawerHeader(
+            decoration: const BoxDecoration(
                 image: DecorationImage(
               fit: BoxFit.cover,
               image: NetworkImage(
@@ -27,10 +28,10 @@ class _AppDrawerState extends State<AppDrawer> {
             child: Align(
               alignment: Alignment.bottomLeft,
               child: Padding(
-                padding: EdgeInsets.only(bottom: 16.0, left: 16.0),
+                padding: const EdgeInsets.only(bottom: 16.0, left: 16.0),
                 child: Text(
-                  'Имя пользователя',
-                  style: TextStyle(
+                  users[0].name,
+                  style: const TextStyle(
                     color: Colors.black,
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
