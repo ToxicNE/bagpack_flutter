@@ -43,9 +43,9 @@ class ProductRepository {
     final List<ProductCart> localProducts = [];
     final productList = localProducts + mocProducts;
     return productList;
-
-    // throw Exception('ошибка');
   }
+
+  
 
   Future<void> saveProduct(ProductCart productCart) async {}
 

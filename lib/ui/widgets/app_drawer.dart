@@ -1,6 +1,9 @@
-import 'package:bagpack/ui/screens/authentication_screen/data/user_model.dart';
+import 'package:bagpack/data/data_source/user_lds.dart';
+import 'package:bagpack/domain/user_repository.dart';
+import 'package:bagpack/main.dart';
 import 'package:bagpack/ui/screens/settings_screen/settings_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AppDrawer extends StatefulWidget {
   const AppDrawer({
@@ -30,7 +33,7 @@ class _AppDrawerState extends State<AppDrawer> {
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 16.0, left: 16.0),
                 child: Text(
-                  user.name,
+                  UserRespository(userLDS: UserLDS(storage: getIt<SharedPreferences>())).getUserName() ?? "Ваше имя",
                   style: const TextStyle(
                     color: Colors.black,
                     fontSize: 25,

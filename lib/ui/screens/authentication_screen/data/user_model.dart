@@ -1,5 +1,5 @@
 class User {
-  String name;
+  String? name;
   String? surname;
   String? email;
   String? phoneNumber;
@@ -21,7 +21,7 @@ class User {
   };
 
   User({
-    required this.name,
+    this.name,
     this.surname,
     this.email,
     this.phoneNumber,

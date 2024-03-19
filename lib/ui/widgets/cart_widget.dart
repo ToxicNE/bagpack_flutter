@@ -1,3 +1,4 @@
+import 'package:bagpack/ui/screens/card_full_screen/card_full_screen.dart';
 import 'package:bagpack/ui/screens/home_screen/data/product.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +23,11 @@ class _CardWidgetState extends State<CardWidget> {
         highlightColor: Colors.deepPurple.shade300,
         hoverColor: Colors.deepPurple.shade400,
         focusColor: Colors.deepPurple.shade400,
-        onTap: () {},
+        onTap: () {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+            return const CardFullScreen();
+          }));
+        },
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Column(

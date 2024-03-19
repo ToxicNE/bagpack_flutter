@@ -14,16 +14,50 @@ class UserRespository {
   UserLDS userLDS;
 
   void getIsUserAuth() {
-    final  jsonUser = userLDS.getUser();
-    if(jsonUser!= null){
+    final jsonUser = userLDS.getUser();
+    if (jsonUser != null) {
       isAuth = true;
       user = User.fromJson(jsonDecode(jsonUser));
-    }else{
+    } else {
       isAuth = false;
     }
   }
 
-  Future<void> saveUser (User user) async {
+  Future<void> saveUser(User user) async {
     await userLDS.saveUser(jsonEncode(user.toJson()));
+  }
+
+  
+
+  Future<void> deleteUser() async {
+    await userLDS.deleteUser();
+  }
+
+  String? getUserName() {
+    return UserLDS(storage: userLDS.storage).getUserName();
+  }
+
+Future<void> saveUserName (String name) async {
+    await userLDS.saveUser(jsonEncode(User(name: name).toJson()));
+  }
+
+  String? getUserSurname() {
+   return UserLDS(storage: userLDS.storage).getUserSurname();
+  }
+
+  Future<void> saveUserSurname(String surname) async {
+    await userLDS.saveUser(jsonEncode(User(surname: surname).toJson()));
+  }
+
+  String? getUserEmail() {
+    return UserLDS(storage: userLDS.storage).getUserEmail();
+  }
+
+  String? getUserPhoneNumber() {
+    return UserLDS(storage: userLDS.storage).getUserPhoneNumber();
+  }
+
+  String? getUserProfileImage() {
+    return UserLDS(storage: userLDS.storage).getUserProfileImage();
   }
 }

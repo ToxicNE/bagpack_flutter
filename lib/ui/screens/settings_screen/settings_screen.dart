@@ -1,9 +1,14 @@
 import 'package:bagpack/bloc/product_bloc/product_bloc.dart';
+import 'package:bagpack/data/data_source/user_lds.dart';
 import 'package:bagpack/domain/user_repository.dart';
 import 'package:bagpack/main.dart';
 import 'package:bagpack/ui/screens/authentication_screen/authentication_screen.dart';
-import 'package:bagpack/ui/screens/authentication_screen/data/user_model.dart';
+import 'package:bagpack/ui/screens/settings_screen/inputScreen/input_update_email_screen.dart';
+import 'package:bagpack/ui/screens/settings_screen/inputScreen/input_update_name_screen.dart';
+import 'package:bagpack/ui/screens/settings_screen/inputScreen/input_update_phone_screen.dart';
+import 'package:bagpack/ui/screens/settings_screen/inputScreen/input_update_surname_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -13,6 +18,7 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class SettingsScreenState extends State<SettingsScreen> {
+  bool isChangeNamePressed = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,47 +55,73 @@ class SettingsScreenState extends State<SettingsScreen> {
             onChanged: (value) {},
           ),
           ListTile(
-            title: Text(user.name),
+            title: Text(UserRespository(
+                        userLDS: UserLDS(storage: getIt<SharedPreferences>()))
+                    .getUserName() ??
+                "Ваше имя"),
             subtitle: const Text("Ваше имя"),
             trailing: IconButton(
               icon: const Icon(Icons.edit),
-              onPressed: () {},
+              onPressed: () async {
+                await showDialog(
+                    context: context, builder: (context) => InputUpdateName());
+
+                setState(() {});
+              },
             ),
           ),
           ListTile(
-            title: Text("${user.surname}"),
+            title: Text(UserRespository(
+                        userLDS: UserLDS(storage: getIt<SharedPreferences>()))
+                    .getUserSurname() ??
+                "Ваше фамилия"),
             subtitle: const Text("Ваша фамилия"),
             trailing: IconButton(
               icon: const Icon(Icons.edit),
-              onPressed: () {},
+              onPressed: () async {
+                await showDialog(
+                    context: context,
+                    builder: (context) => InputUpdateSurname());
+                setState(() {});
+              },
             ),
           ),
           ListTile(
-            title: Text("${user.email}"),
+            title: Text(UserRespository(
+                        userLDS: UserLDS(storage: getIt<SharedPreferences>()))
+                    .getUserEmail() ??
+                "Ваш email"),
             subtitle: const Text("Ваш email"),
             trailing: IconButton(
               icon: const Icon(Icons.edit),
-              onPressed: () {},
+              onPressed: () async {
+                await showDialog(
+                    context: context, builder: (context) => InputUpdateEmail());
+                setState(() {});
+              },
             ),
           ),
           ListTile(
-            title: Text("${user.phoneNumber}"),
+            title: Text(UserRespository(
+                        userLDS: UserLDS(storage: getIt<SharedPreferences>()))
+                    .getUserPhoneNumber() ??
+                "Ваш номер телефона"),
             subtitle: const Text("Ваш номер телефона"),
             trailing: IconButton(
               icon: const Icon(Icons.edit),
-              onPressed: () {},
+              onPressed: () async {
+                await showDialog(
+                    context: context,
+                    builder: (context) => InputUpdatePhoneNumber());
+                setState(() {});
+              },
             ),
           ),
           ElevatedButton(
             onPressed: () {
               getIt.unregister<ProductBloc>(instance: getIt<ProductBloc>());
 
-              getIt<UserRespository>().isAuth = false;
-              user.name = '';
-              user.surname = '';
-              user.email = '';
-              user.phoneNumber = '';
-              user.profileImage = '';
+              getIt<UserRespository>().deleteUser();
 
               Navigator.of(context).pushReplacement(MaterialPageRoute(
                 builder: (context) => AuthenticationScreen(),
