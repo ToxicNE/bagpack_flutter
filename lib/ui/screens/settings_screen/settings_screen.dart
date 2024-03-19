@@ -1,3 +1,4 @@
+import 'package:bagpack/bloc/product_bloc/product_bloc.dart';
 import 'package:bagpack/domain/user_repository.dart';
 import 'package:bagpack/main.dart';
 import 'package:bagpack/ui/screens/authentication_screen/authentication_screen.dart';
@@ -81,15 +82,18 @@ class SettingsScreenState extends State<SettingsScreen> {
           ),
           ElevatedButton(
             onPressed: () {
-              Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (context) => AuthenticationScreen(),
-              ));
+              getIt.unregister<ProductBloc>(instance: getIt<ProductBloc>());
+
               getIt<UserRespository>().isAuth = false;
               user.name = '';
               user.surname = '';
               user.email = '';
               user.phoneNumber = '';
               user.profileImage = '';
+
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (context) => AuthenticationScreen(),
+              ));
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white,

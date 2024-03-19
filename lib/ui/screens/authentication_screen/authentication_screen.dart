@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:bagpack/domain/user_repository.dart';
 import 'package:bagpack/main.dart';
 import 'package:bagpack/ui/screens/authentication_screen/data/user_model.dart';
@@ -25,6 +27,7 @@ class AuthenticationScreen extends StatelessWidget {
               decoration: const InputDecoration(
                 labelText: 'Имя',
               ),
+              keyboardType: TextInputType.name,
             ),
             const SizedBox(height: 16),
             TextField(
@@ -33,16 +36,19 @@ class AuthenticationScreen extends StatelessWidget {
               decoration: const InputDecoration(
                 labelText: 'Номер телефона',
               ),
+              keyboardType: TextInputType.phone,
             ),
             const SizedBox(height: 24),
             ElevatedButton(
-              onPressed: () {
+              onPressed: () async {
                 if (getIt<UserRespository>().isAuth == false) {
                   getIt<UserRespository>().isAuth = true;
                 }
 
                 user.name = _nameController.text;
                 user.phoneNumber = _phoneController.text;
+
+              await  getIt<UserRespository>().saveUser(user);
 
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
