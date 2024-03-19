@@ -1,5 +1,7 @@
-// class UserRepository{
-//   bool isAuth = false;
-// }
+class UserRespository {
+  late bool isAuth;
 
-bool isAuth = false;
+  Future<void> getIsUserAuth() async {
+    isAuth = true;
+  }
+}

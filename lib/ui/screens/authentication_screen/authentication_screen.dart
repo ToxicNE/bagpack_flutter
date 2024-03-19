@@ -37,8 +37,8 @@ class AuthenticationScreen extends StatelessWidget {
             const SizedBox(height: 24),
             ElevatedButton(
               onPressed: () {
-                if (isAuth == false) {
-                  isAuth = true;
+                if (getIt<UserRespository>().isAuth == false) {
+                  getIt<UserRespository>().isAuth = true;
                 }
 
                 user.name = _nameController.text;

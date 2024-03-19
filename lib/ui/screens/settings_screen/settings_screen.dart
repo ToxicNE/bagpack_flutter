@@ -1,4 +1,5 @@
 import 'package:bagpack/domain/user_repository.dart';
+import 'package:bagpack/main.dart';
 import 'package:bagpack/ui/screens/authentication_screen/authentication_screen.dart';
 import 'package:bagpack/ui/screens/authentication_screen/data/user_model.dart';
 import 'package:flutter/material.dart';
@@ -83,7 +84,7 @@ class SettingsScreenState extends State<SettingsScreen> {
               Navigator.of(context).pushReplacement(MaterialPageRoute(
                 builder: (context) => AuthenticationScreen(),
               ));
-              isAuth = false;
+              getIt<UserRespository>().isAuth = false;
               user.name = '';
               user.surname = '';
               user.email = '';
