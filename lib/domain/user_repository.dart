@@ -28,9 +28,11 @@ class UserRespository {
 
   Future<void> saveUser(User newUser) async {
     await userLDS.saveUser(jsonEncode(newUser.toJson()));
+    userNotifier.value = newUser;
   }
 
   Future<void> deleteUser() async {
     await userLDS.deleteUser();
+    userNotifier.value = null;
   }
 }

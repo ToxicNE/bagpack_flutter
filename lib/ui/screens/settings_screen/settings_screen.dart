@@ -9,6 +9,8 @@ import 'package:bagpack/ui/screens/settings_screen/inputScreen/input_update_phon
 import 'package:bagpack/ui/screens/settings_screen/inputScreen/input_update_surname_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../authentication_screen/data/user_model.dart';
+
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
 
@@ -17,7 +19,38 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class SettingsScreenState extends State<SettingsScreen> {
-  bool isChangeNamePressed = false;
+  final TextEditingController _inputNameController = TextEditingController();
+  final TextEditingController _inputSurnameController = TextEditingController();
+
+  bool showNameTextField = false;
+  bool showSurnameTextField = false;
+  bool showPhoneTextField = false;
+  bool showEmailTextField = false;
+
+  void _onChangeNameStateTap() {
+    setState(() {
+      showNameTextField = !showNameTextField;
+    });
+  }
+
+  void _onChangeSurnameStateTap() {
+    setState(() {
+      showSurnameTextField = !showSurnameTextField;
+    });
+  }
+
+  void _onChangePhoneStateTap() {
+    setState(() {
+      showPhoneTextField = !showPhoneTextField;
+    });
+  }
+
+  void _onChangeEmailStateTap() {
+    setState(() {
+      showEmailTextField = !showEmailTextField;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,36 +89,67 @@ class SettingsScreenState extends State<SettingsScreen> {
                   value: false,
                   onChanged: (value) {},
                 ),
-                ListTile(
-                  title: Text(value?.name ?? "Ваше имя"),
-                  subtitle: const Text("Ваше имя"),
-                  trailing: IconButton(
-                    icon: const Icon(Icons.edit),
-                    onPressed: () async {
-                      await showDialog(context: context, builder: (context) => InputUpdateName());
-
-                      setState(() {});
-                    },
+                if (showNameTextField)
+                  Row(
+                    children: [
+                       TextField(controller: _inputNameController,),
+                      IconButton(
+                        icon: const Icon(Icons.check),
+                        onPressed: () {
+                          _onChangeNameStateTap();
+                          User newUser =
+                              getIt<UserRespository>().userNotifier.value!;
+                          newUser.name = _inputNameController.text;
+                          getIt<UserRespository>().saveUser(newUser);
+                        },
+                      )
+                    ],
+                  )
+                else
+                  ListTile(
+                    title: Text(value?.name ?? "Ваше имя"),
+                    subtitle: const Text("Ваше имя"),
+                    trailing: IconButton(
+                      icon: const Icon(Icons.edit),
+                      onPressed: () async {
+                        _onChangeNameStateTap();
+                      },
+                    ),
                   ),
-                ),
-                ListTile(
-                  title: Text(value?.surname ?? "Ваше фамилия"),
-                  subtitle: const Text("Ваша фамилия"),
-                  trailing: IconButton(
-                    icon: const Icon(Icons.edit),
-                    onPressed: () async {
-                      await showDialog(context: context, builder: (context) => InputUpdateSurname());
-                      setState(() {});
-                    },
+                if (showSurnameTextField)
+                  Row(
+                    children: [
+                       TextField(controller: _inputSurnameController,),
+                      IconButton(
+                          onPressed: _onChangeSurnameStateTap,
+                          icon: const Icon(Icons.check)),
+                    ],
+                  )
+                else
+                  ListTile(
+                    title: Text(value?.surname ?? "Ваше фамилия"),
+                    subtitle: const Text("Ваша фамилия"),
+                    trailing: IconButton(
+                      icon: const Icon(Icons.edit),
+                      onPressed: () async {
+                        await showDialog(
+                            context: context,
+                            builder: (context) => InputUpdateSurname());
+                        setState(() {});
+                      },
+                    ),
                   ),
-                ),
                 ListTile(
-                  title: Text(getIt<UserRespository>().userNotifier.value?.name ?? "Ваш email"),
+                  title: Text(
+                      getIt<UserRespository>().userNotifier.value?.name ??
+                          "Ваш email"),
                   subtitle: const Text("Ваш email"),
                   trailing: IconButton(
                     icon: const Icon(Icons.edit),
                     onPressed: () async {
-                      await showDialog(context: context, builder: (context) => InputUpdateEmail());
+                      await showDialog(
+                          context: context,
+                          builder: (context) => InputUpdateEmail());
                       setState(() {});
                     },
                   ),
@@ -96,14 +160,17 @@ class SettingsScreenState extends State<SettingsScreen> {
                   trailing: IconButton(
                     icon: const Icon(Icons.edit),
                     onPressed: () async {
-                      await showDialog(context: context, builder: (context) => InputUpdatePhoneNumber());
+                      await showDialog(
+                          context: context,
+                          builder: (context) => InputUpdatePhoneNumber());
                       setState(() {});
                     },
                   ),
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    getIt.unregister<ProductBloc>(instance: getIt<ProductBloc>());
+                    getIt.unregister<ProductBloc>(
+                        instance: getIt<ProductBloc>());
 
                     getIt<UserRespository>().deleteUser();
 
