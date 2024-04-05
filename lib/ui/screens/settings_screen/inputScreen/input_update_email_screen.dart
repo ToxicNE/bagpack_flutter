@@ -2,7 +2,6 @@
 
 import 'package:bagpack/domain/user_repository.dart';
 import 'package:bagpack/main.dart';
-import 'package:bagpack/ui/screens/authentication_screen/data/user_model.dart';
 import 'package:flutter/material.dart';
 
 class InputUpdateEmail extends StatefulWidget {
@@ -16,15 +15,12 @@ class InputUpdateEmail extends StatefulWidget {
 class _InputUpdateEmailState extends State<InputUpdateEmail> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Material(
-                borderRadius: BorderRadius.circular(20.0),
-                child: Column(children: [
+    return Column(mainAxisAlignment: MainAxisAlignment.center, mainAxisSize: MainAxisSize.min, children: [
+      Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Material(
+            borderRadius: BorderRadius.circular(20.0),
+            child: Column(children: [
               TextField(
                 controller: widget._emailController,
                 decoration: const InputDecoration(
@@ -35,17 +31,15 @@ class _InputUpdateEmailState extends State<InputUpdateEmail> {
               const SizedBox(height: 24),
               ElevatedButton(
                 onPressed: () async {
-                  if (getIt<UserRespository>().isAuth == false) {
-                    getIt<UserRespository>().isAuth = true;
-                  }
-                  user.email = widget._emailController.text;
-                  await getIt<UserRespository>().saveUser(user);
+                  getIt<UserRespository>().userNotifier.value?.email = widget._emailController.text;
+
+                  await getIt<UserRespository>().saveUser(getIt<UserRespository>().userNotifier.value!);
                   Navigator.of(context).pop();
                 },
                 child: const Text('Сохранить'),
               ),
             ])),
-          ),
-        ]);
+      ),
+    ]);
   }
 }

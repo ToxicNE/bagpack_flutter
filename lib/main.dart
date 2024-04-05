@@ -46,10 +46,9 @@ class _AppState extends State<App> {
 Future<void> _initDependecies() async {
   final storage = await SharedPreferences.getInstance();
   getIt.registerSingleton<SharedPreferences>(storage);
-  getIt.registerSingleton<UserRespository>(
-      UserRespository(userLDS: UserLDS(storage: storage)));
+  getIt.registerSingleton<UserRespository>(UserRespository(userLDS: UserLDS(storage: storage)));
 
-  getIt<UserRespository>().getIsUserAuth();
+  getIt<UserRespository>();
 
   getIt.registerSingleton<ProductRepository>(ProductRepository());
 }
