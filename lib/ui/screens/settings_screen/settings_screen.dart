@@ -2,6 +2,7 @@ import 'package:bagpack/bloc/product_bloc/product_bloc.dart';
 import 'package:bagpack/domain/user_repository.dart';
 import 'package:bagpack/main.dart';
 import 'package:bagpack/ui/screens/authentication_screen/authentication_screen.dart';
+import 'package:bagpack/ui/screens/change_user_profile_image.dart';
 import 'package:flutter/material.dart';
 
 import '../authentication_screen/data/user_model.dart';
@@ -12,19 +13,20 @@ class SettingsScreen extends StatefulWidget {
   @override
   SettingsScreenState createState() => SettingsScreenState();
 }
+
 bool isDarkTheme = false;
+
 class SettingsScreenState extends State<SettingsScreen> {
   final TextEditingController _inputNameController = TextEditingController();
   final TextEditingController _inputSurnameController = TextEditingController();
   final TextEditingController _inputPhoneController = TextEditingController();
   final TextEditingController _inputEmailController = TextEditingController();
 
+  bool showProfileImageTextField = false;
   bool showNameTextField = false;
   bool showSurnameTextField = false;
   bool showPhoneTextField = false;
   bool showEmailTextField = false;
-
-  
 
   void _onChangeNameStateTap() {
     setState(() {
@@ -70,7 +72,7 @@ class SettingsScreenState extends State<SettingsScreen> {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(20.0),
                     child: Image.network(
-                      "https://www.wmj.ru/imgs/2020/10/23/18/4300765/75ca401ba4ef59c4222c54c26ac7cc22d032b145.jpg",
+                       'https://www.wmj.ru/imgs/2020/10/23/18/4300765/75ca401ba4ef59c4222c54c26ac7cc22d032b145.jpg',
                       width: 200,
                       height: 200,
                       fit: BoxFit.cover,
@@ -79,7 +81,11 @@ class SettingsScreenState extends State<SettingsScreen> {
                 ),
                 Center(
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const ChangeUserProfileScreen(),
+                      ));
+                    },
                     child: const Text("Сменить фото профиля"),
                   ),
                 ),
@@ -183,7 +189,7 @@ class SettingsScreenState extends State<SettingsScreen> {
                             labelText:
                                 value?.phoneNumber ?? "Ваш номер телефона",
                           ),
-                          keyboardType:TextInputType.phone,
+                          keyboardType: TextInputType.phone,
                           autocorrect: true,
                           controller: _inputPhoneController,
                         ),
