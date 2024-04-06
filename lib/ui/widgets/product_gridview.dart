@@ -28,7 +28,7 @@ class _ProductGridViewState extends State<ProductGridView> {
         }
         if (state is ProductErrorState) {
           return const Center(
-            child: Text('something went wrong'),
+            child: Text('Что то пошло не так'),
           );
         }
         if (state is ProductLoadedState) {

@@ -28,6 +28,8 @@ class AuthenticationScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Аутентификация'),
+        centerTitle: true,
+        leading: const Icon(Icons.person),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
