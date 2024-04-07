@@ -27,7 +27,7 @@ class _AppState extends State<App> {
         future: _initDependecies(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            if (getIt<UserRespository>().isAuth == false) {
+            if (getIt<UserRespository>().userNotifier.value == null) {
               return MaterialApp(home: AuthenticationScreen());
             } else {
               return const MaterialApp(home: HomeScreen());
@@ -49,7 +49,7 @@ Future<void> _initDependecies() async {
   getIt.registerSingleton<UserRespository>(
       UserRespository(userLDS: UserLDS(storage: storage)));
 
-  getIt<UserRespository>().getIsUserAuth();
+  getIt<UserRespository>();
 
   getIt.registerSingleton<ProductRepository>(ProductRepository());
 }

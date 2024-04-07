@@ -33,7 +33,7 @@ class _AppDrawerState extends State<AppDrawer> {
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 16.0, left: 16.0),
                 child: Text(
-                  UserRespository(userLDS: UserLDS(storage: getIt<SharedPreferences>())).getUserName() ?? "Ваше имя",
+                  UserRespository(userLDS: UserLDS(storage: getIt<SharedPreferences>())).userNotifier.value!.name ?? "Ваше имя",
                   style: const TextStyle(
                     color: Colors.black,
                     fontSize: 25,

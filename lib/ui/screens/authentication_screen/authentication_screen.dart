@@ -11,11 +11,25 @@ class AuthenticationScreen extends StatelessWidget {
 
   AuthenticationScreen({super.key});
 
+  Future<void> auth(BuildContext context) async {
+    User user = User(name: _nameController.text, phoneNumber: _phoneController.text);
+
+    await getIt<UserRespository>().saveUser(user);
+
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(
+        builder: (context) => const App(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Аутентификация'),
+        centerTitle: true,
+        leading: const Icon(Icons.person),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -40,22 +54,7 @@ class AuthenticationScreen extends StatelessWidget {
             ),
             const SizedBox(height: 24),
             ElevatedButton(
-              onPressed: () async {
-                if (getIt<UserRespository>().isAuth == false) {
-                  getIt<UserRespository>().isAuth = true;
-                }
-
-                user.name = _nameController.text;
-                user.phoneNumber = _phoneController.text;
-
-              await  getIt<UserRespository>().saveUser(user);
-
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                    builder: (context) => const App(),
-                  ),
-                );
-              },
+              onPressed: () => auth(context),
               child: const Text('Войти'),
             ),
           ],

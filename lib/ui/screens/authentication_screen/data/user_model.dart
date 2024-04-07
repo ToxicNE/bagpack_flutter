@@ -12,13 +12,13 @@ class User {
         phoneNumber: json['phoneNumber'],
         profileImage: json['profileImage'],
       );
-   Map<String, dynamic> toJson ()=> {
-    'name': name,
-    'surname': surname,
-    'email': email,
-    'phoneNumber': phoneNumber,
-    'profileImage': profileImage,
-  };
+  Map<String, dynamic> toJson() => {
+        'name': name,
+        'surname': surname,
+        'email': email,
+        'phoneNumber': phoneNumber,
+        'profileImage': profileImage,
+      };
 
   User({
     this.name,
@@ -28,11 +28,3 @@ class User {
     this.profileImage,
   });
 }
-
-User user = User(
-  name: '',
-  surname: '',
-  email: '',
-  phoneNumber: '',
-  profileImage: '',
-);
