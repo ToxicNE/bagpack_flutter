@@ -55,13 +55,6 @@ class SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text("Настройки"),
-          centerTitle: true,
-          elevation: 0,
-          backgroundColor: Colors.deepPurple.shade400,
-          foregroundColor: Colors.black,
-        ),
         body: ValueListenableBuilder(
           valueListenable: getIt<UserRespository>().userNotifier,
           builder: (context, value, child) {

@@ -1,8 +1,7 @@
 import 'package:bagpack/data/data_source/user_lds.dart';
 import 'package:bagpack/domain/product_repository.dart';
 import 'package:bagpack/domain/user_repository.dart';
-import 'package:bagpack/ui/screens/authentication_screen/authentication_screen.dart';
-import 'package:bagpack/ui/screens/home_screen/home_screen.dart';
+import 'package:bagpack/ui/screens/app_navigation_screen/app_navigation_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -26,18 +25,11 @@ class _AppState extends State<App> {
     return FutureBuilder(
         future: _initDependecies(),
         builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            if (getIt<UserRespository>().userNotifier.value == null) {
-              return MaterialApp(home: AuthenticationScreen());
-            } else {
-              return const MaterialApp(home: HomeScreen());
-            }
-          }
-
-          //TODO() Вставить загрузку
-
-          return const SizedBox(
-            child: Center(child: CircularProgressIndicator()),
+//TODO вставить загрузку
+          return MaterialApp(
+            routes: {
+              '/': (context) => const AppNavigationScreen(),
+            },
           );
         });
   }
